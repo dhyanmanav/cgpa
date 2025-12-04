@@ -1,69 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { FileText, TrendingUp, Target, Lightbulb, BookOpen, Award, Download } from 'lucide-react';
+import React from 'react';
+import { FileText, TrendingUp, Target, Lightbulb, BookOpen, Award } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { calculateSGPA } from '../utils/gradeCalculations';
 
 export function Dashboard() {
   const { setCurrentPage, subjects, darkMode } = useApp();
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [showInstallButton, setShowInstallButton] = useState(true); // Always show by default
-  const [isInstalled, setIsInstalled] = useState(false);
+
 
   const completedSubjects = subjects.filter(s => s.seeScore !== undefined && s.seeScore !== null);
   const currentSGPA = calculateSGPA(subjects);
 
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (e: any) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later
-      setDeferredPrompt(e);
-      // Show install button
-      //setShowInstallButton(true);
-    };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    // Check if app is already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setShowInstallButton(false);
-      setIsInstalled(true);
-    }
 
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
-  }, []);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) {
-      // If no deferred prompt, show instructions
-      alert(
-        'To install this app:\n\n' +
-        '📱 Chrome/Edge (Desktop): Look for the install icon in the address bar\n' +
-        '📱 Chrome (Android): Tap the menu (⋮) and select "Install app" or "Add to Home Screen"\n' +
-        '📱 Safari (iOS): Tap the Share button and select "Add to Home Screen"\n' +
-        '📱 Firefox: Tap the menu and select "Install"'
-      );
-      return;
-    }
-
-    // Show the install prompt
-    deferredPrompt.prompt();
-
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-
-    if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-      setShowInstallButton(false);
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-
-    // Clear the deferredPrompt for later use
-    setDeferredPrompt(null);
-  };
 
   const navigationCards = [
     {
@@ -103,19 +52,7 @@ export function Dashboard() {
         ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
         : 'bg-gradient-to-br from-blue-50 to-white border border-blue-100'
         } shadow-lg`}>
-        {/* Install Button - Top Right of Hero */}
-        {showInstallButton && (
-          <button
-            onClick={handleInstallClick}
-            className={`absolute top-6 right-6 px-5 py-3 rounded-xl flex items-center gap-2 transition-all hover:scale-105 shadow-lg ${darkMode
-              ? 'bg-green-600 hover:bg-green-700 text-white'
-              : 'bg-green-500 hover:bg-green-600 text-white'
-              }`}
-          >
-            <Download className="w-5 h-5" />
-            <span>Install</span>
-          </button>
-        )}
+
 
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
