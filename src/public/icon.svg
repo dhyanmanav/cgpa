@@ -1,0 +1,26 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background - Green gradient -->
+  <rect width="512" height="512" rx="120" fill="url(#greenGradient)"/>
+  
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e7d32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Graduation cap icon -->
+  <g transform="translate(90, 120)">
+    <!-- Cap base -->
+    <path d="M166 50L332 110L166 170L0 110L166 50Z" fill="white" opacity="0.9"/>
+    <path d="M332 110V170L166 230L0 170V110" fill="white" opacity="0.7"/>
+    
+    <!-- Tassel -->
+    <circle cx="332" cy="110" r="15" fill="#FFD700"/>
+    <line x1="332" y1="125" x2="332" y2="160" stroke="#FFD700" stroke-width="3"/>
+    <circle cx="332" cy="165" r="8" fill="#FFD700"/>
+  </g>
+  
+  <!-- "A+" grade symbol -->
+  <text x="256" y="380" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="white" text-anchor="middle">A+</text>
+</svg>
