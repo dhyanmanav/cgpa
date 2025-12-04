@@ -19,7 +19,7 @@ export function Dashboard() {
       // Stash the event so it can be triggered later
       setDeferredPrompt(e);
       // Show install button
-      setShowInstallButton(true);
+      //setShowInstallButton(true);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -100,16 +100,16 @@ export function Dashboard() {
     <div className="max-w-7xl mx-auto px-4 py-8 pb-24">
       {/* Welcome Card */}
       <div className={`rounded-2xl p-8 mb-8 relative ${darkMode
-          ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-          : 'bg-gradient-to-br from-blue-50 to-white border border-blue-100'
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
+        : 'bg-gradient-to-br from-blue-50 to-white border border-blue-100'
         } shadow-lg`}>
         {/* Install Button - Top Right of Hero */}
         {showInstallButton && (
           <button
             onClick={handleInstallClick}
             className={`absolute top-6 right-6 px-5 py-3 rounded-xl flex items-center gap-2 transition-all hover:scale-105 shadow-lg ${darkMode
-                ? 'bg-green-600 hover:bg-green-700 text-white'
-                : 'bg-green-500 hover:bg-green-600 text-white'
+              ? 'bg-green-600 hover:bg-green-700 text-white'
+              : 'bg-green-500 hover:bg-green-600 text-white'
               }`}
           >
             <Download className="w-5 h-5" />
@@ -181,8 +181,8 @@ export function Dashboard() {
             key={card.page}
             onClick={() => setCurrentPage(card.page)}
             className={`p-6 rounded-2xl text-left transition-all hover:scale-105 ${darkMode
-                ? 'bg-gray-800 border border-gray-700 hover:border-gray-600'
-                : 'bg-white border border-gray-200 hover:border-gray-300'
+              ? 'bg-gray-800 border border-gray-700 hover:border-gray-600'
+              : 'bg-white border border-gray-200 hover:border-gray-300'
               } shadow-lg hover:shadow-xl`}
           >
             <div className="flex items-start gap-4">
@@ -205,8 +205,8 @@ export function Dashboard() {
       {/* Getting Started */}
       {subjects.length === 0 && (
         <div className={`mt-8 p-6 rounded-2xl ${darkMode
-            ? 'bg-blue-900/20 border border-blue-800'
-            : 'bg-blue-50 border border-blue-200'
+          ? 'bg-blue-900/20 border border-blue-800'
+          : 'bg-blue-50 border border-blue-200'
           }`}>
           <h3 className={`mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-900'}`}>
             Getting Started
